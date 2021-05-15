@@ -15,6 +15,7 @@ ActionInitialization::ActionInitialization(HistoManager* histo)
   : G4VUserActionInitialization()
 {
   fHistoManager = histo;
+  G4cout << "\n finish ActionInitialization \n" << G4endl;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -39,7 +40,7 @@ void ActionInitialization::Build() const
   SetUserAction(eventAction);
   SetUserAction(new SteppingAction(eventAction));
   SetUserAction(new StackingAction());
-}  
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
