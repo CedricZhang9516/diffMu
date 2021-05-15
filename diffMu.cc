@@ -1,7 +1,7 @@
 // diffMu
-// 
+//
 // simulation of muons in aerogel target
-//   with two layers of different densities, 
+//   with two layers of different densities,
 //   where the second layer is a perforated or drilled layer
 // adapted from example/extended/AnaEx02 for using ROOT histograms
 //   and detector (i.e., target) geometry adjustable via input .mac files
@@ -70,7 +70,7 @@ namespace {
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 int main(int argc,char** argv)
-{     
+{
   // Evaluate arguments
   //
   if ( argc > 23 ) {
@@ -87,7 +87,7 @@ int main(int argc,char** argv)
   G4String sDepth;
   G4String sDensity;
   G4String sRunNumber = "0";
-  G4String sSeed;  
+  G4String sSeed;
   G4String output_dir = "./";
   G4String logfile;
   G4String macro;
@@ -97,9 +97,9 @@ int main(int argc,char** argv)
 #endif
 
   G4int NumEvents;
-  G4double pmom, dpg; 
+  G4double pmom, dpg;
   G4double abdiameter, abpitch, abdepth, abdensity;
-   
+
   for ( G4int i=1; i<argc; i=i+2 ) {
     if ( G4String(argv[i]) == "-h" ) {
       PrintUsage();
@@ -162,8 +162,8 @@ int main(int argc,char** argv)
       PrintUsage();
       return 1;
     }
-  }  
-  
+  }
+
   if ( (sPmom.size() == 0) ^ (sDpg.size() == 0)) {
     PrintUsage();
     return 1;
@@ -178,7 +178,7 @@ int main(int argc,char** argv)
   if ( ! fBatch ) {
     ui = new G4UIExecutive(argc, argv, session);
   }
-#endif  
+#endif
   // Seed the random number according to time
   //
   G4Random::setTheEngine(new CLHEP::RanecuEngine());
@@ -196,9 +196,9 @@ int main(int argc,char** argv)
   //
 #ifdef G4MULTITHREADED
   auto runManager = new G4MTRunManager;
-  if ( nThreads > 0 ) { 
+  if ( nThreads > 0 ) {
     runManager->SetNumberOfThreads(nThreads);
-  }  
+  }
 #else
   auto runManager = new G4RunManager;
 #endif
@@ -217,7 +217,7 @@ int main(int argc,char** argv)
   //
   HistoManager*  histo = new HistoManager(detector);
   //auto  histo = new HistoManager(detector);
-      
+
   // Set user action classes
   //
   //auto actionInitialization = new ActionInitialization(detector,histo);
@@ -234,7 +234,7 @@ int main(int argc,char** argv)
   // G4VisExecutive can take a verbosity argument - see /vis/verbose guidance.
   visManager->Initialize();
 #endif
-  
+
 
   // Get the pointer to the User Interface manager
   auto UImanager = G4UImanager::GetUIpointer();
@@ -242,7 +242,7 @@ int main(int argc,char** argv)
 
   // =======================================================
   // // // diffMu commands and control from command line
-  
+
   // dffMu input
   G4String command, gpspar;
   G4String rootfilebase;
@@ -253,7 +253,7 @@ int main(int argc,char** argv)
 
   // mac files have some defaults; other default values are hard-coded
   command = "/control/execute setup.mac";
-  UImanager->ApplyCommand(command);    
+  UImanager->ApplyCommand(command);
 
   // // the run initialize command is in setup.mac
   //command = "/run/initialize";
@@ -285,14 +285,14 @@ int main(int argc,char** argv)
     ss.str(std::string());
     ss << ekin;
     gpspar = ss.str();
-    UImanager->ApplyCommand(command+gpspar+" MeV");    
+    UImanager->ApplyCommand(command+gpspar+" MeV");
     ss.str(std::string());
     ss << std::setfill('0') << std::setw(4) << int(100.*pmom);
     rootfilebase.append("_p"+ss.str());
     // calculate and set beam rms energy width, approximated by dE=E*2.*dp/p
     G4double dekinrms = 2.*ekin*dpg;   // dE in MeV
     command = "/gps/ene/type Gauss";
-    UImanager->ApplyCommand(command);    
+    UImanager->ApplyCommand(command);
     command = "/gps/ene/sigma ";
     ss.str(std::string());
     ss << dekinrms;
@@ -309,7 +309,7 @@ int main(int argc,char** argv)
   // aerogel target parameters
   if (sDiameter.size() ) {
     command = "/DiffMu/tgt/setPerfDiameter "+sDiameter+" mm";
-    UImanager->ApplyCommand(command);    
+    UImanager->ApplyCommand(command);
     ss.str(std::string());
     ss << std::setfill('0') << std::setw(4) << int(1000.*abdiameter);
     rootfilebase.append("_phi"+ss.str());
@@ -317,7 +317,7 @@ int main(int argc,char** argv)
   }
   if (sPitch.size() ) {
     command = "/DiffMu/tgt/setPerfPitch "+sPitch+" mm";
-    UImanager->ApplyCommand(command);    
+    UImanager->ApplyCommand(command);
     ss.str(std::string());
     ss << std::setfill('0') << std::setw(4) << int(1000.*abpitch);
     rootfilebase.append("_pit"+ss.str());
@@ -325,7 +325,7 @@ int main(int argc,char** argv)
   }
   if (sDepth.size() ) {
     command = "/DiffMu/tgt/setPerfDepth "+sDepth+" mm";
-    UImanager->ApplyCommand(command);    
+    UImanager->ApplyCommand(command);
     ss.str(std::string());
     ss << std::setfill('0') << std::setw(4) << int(1000.*abdepth);
     rootfilebase.append("_dep"+ss.str());
@@ -333,7 +333,7 @@ int main(int argc,char** argv)
   }
   if (sDensity.size() ) {
     command = "/DiffMu/tgt/setPerfLyrDens "+sDensity+" mg/cm3";
-    UImanager->ApplyCommand(command);    
+    UImanager->ApplyCommand(command);
     ss.str(std::string());
     ss << std::setfill('0') << std::setw(5) << int(10.*abdensity);
     rootfilebase.append("_den"+ss.str());
@@ -343,7 +343,7 @@ int main(int argc,char** argv)
     command = "/DiffMu/tgt/update";
     UImanager->ApplyCommand(command);
   }
-      
+
   // set run number; "0" is default if not on command line
   runManager->SetRunIDCounter(RunNumber);
   histo->SetRunNumber(RunNumber);
@@ -352,18 +352,18 @@ int main(int argc,char** argv)
 
   if ( logfile.size() ) {
     // make root file have same name as log file with run-specific concatenation
-    histo->rootFileName = output_dir+logfile+rootfilebase+".root"; 
+    histo->rootFileName = output_dir+logfile+rootfilebase+".root";
     G4cout << "output root file name " << output_dir+logfile+"_"+rootfilebase+".root" << G4endl;
     // add output at end of logfile ...
     // (make sure identifier, e.g. run number, is included in HistoManager::PrintStatistic() )
     G4String outputLogFile = output_dir+logfile+".log";
     // ... or make a unique name for each output file
     //G4String outputLogFile = output_dir+logfile+"_"+rootfilebase+".log";
-    histo->logFileName = outputLogFile; 
+    histo->logFileName = outputLogFile;
     G4cout << "output log file name " << outputLogFile << G4endl;
   }
   else {
-    histo->rootFileName = output_dir+"diffMu"+rootfilebase+".root"; 
+    histo->rootFileName = output_dir+"diffMu"+rootfilebase+".root";
     G4cout << "output root file name " << output_dir+"diffMu"+rootfilebase+".root" << G4endl;
   }
   G4cout << "<----------+ " << G4endl;
@@ -387,8 +387,9 @@ int main(int argc,char** argv)
   else
     {  // interactive mode : define visualization and UI session
 #ifdef G4VIS_USE
-      UImanager->ApplyCommand("/control/execute init.mac"); 
+      UImanager->ApplyCommand("/control/execute init.mac");
       UImanager->ApplyCommand("/control/execute vis.mac");
+      //G4cout << "output root file name " << output_dir+"diffMu"+rootfilebase+".root" << G4endl;
 #endif
 #ifdef G4UI_USE
       if (ui->IsGUI())
@@ -398,12 +399,12 @@ int main(int argc,char** argv)
 #endif
     }
 
-  
+
   // Job termination
 #ifdef G4VIS_USE
   delete visManager;
-#endif  
-  delete histo;                
+#endif
+  delete histo;
   delete runManager;
 
   return 0;
