@@ -32,6 +32,7 @@ void RunAction::BeginOfRunAction(const G4Run* aRun)
 
   //histograms
   //
+  G4cout << "fHistoManager->book() start" <<G4endl;
   fHistoManager->book();
   G4cout << "fHistoManager->book() done" <<G4endl;
   fHistoManager->ZeroEventsPrimary();
