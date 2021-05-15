@@ -44,6 +44,8 @@ HistoManager::HistoManager(DetectorConstruction* detConstruction)
 
   // ntuples
   //ntupl1 = 0;
+
+  G4cout << "\n HistoManager initialization done"<< G4endl;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
