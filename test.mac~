@@ -1,0 +1,10 @@
+##### test.mac
+
+### call from command line (-m test.mac) for special purpose
+
+/process/list
+#/process/setVerbose 2 MuZeroDiffusion
+#/process/setVerbose 2 MuZeroFormation
+#/process/setVerbose 2 MuZeroIonization
+#/process/setVerbose 2 MuZeroElasticScatter
+/process/setVerbose 2 all

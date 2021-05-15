@@ -1,0 +1,35 @@
+##### target.mac
+#
+## remember to "make" in source directory to copy this to build directory
+
+### target characteristics
+## https://docs.google.com/spreadsheets/d/1ld14mh6OVFwyKhithT8HrHpKrrl3G0rCNZTSCqjgUqA/edit#gid=1175252378
+
+## test of ablated hole geometry: large holes
+/DiffMu/tgt/setBaseLyrThick 4.0 mm
+/DiffMu/tgt/setBaseLyrDens 30.0 mg/cm3
+/DiffMu/tgt/setPerfLyrThick 4.0 mm
+/DiffMu/tgt/setPerfLyrDens 30.0 mg/cm3
+/DiffMu/tgt/setPerfDiameter 2.0 mm
+/DiffMu/tgt/setPerfPitch 4.0 mm
+/DiffMu/tgt/setPerfDepth 4.0 mm
+
+
+## original aerogel parameters taken from MSR12-3C-T7 (sample 18)
+##  - density 23.9 mg/cm3 and thickness 8.8 mm, SK 20170710 email
+
+### 2017 Sample 10, MSR12-2d-T2, Y=16,19 ppt
+#/DiffMu/tgt/setBaseLyrThick 7.3 mm
+#/DiffMu/tgt/setBaseLyrDens 23.9 mg/cm3
+#/DiffMu/tgt/setPerfLyrThick 1.5 mm
+#/DiffMu/tgt/setPerfLyrDens 23.9 mg/cm3
+#/DiffMu/tgt/setPerfDiameter 0.100 mm
+#/DiffMu/tgt/setPerfPitch 0.200 mm
+#/DiffMu/tgt/setPerfDepth 1.5 mm
+
+
+### Mylar thickness (default 0.050 mm)
+/DiffMu/tgt/setMylarThick 50.0 um   
+
+### update the parameters in geometry
+/DiffMu/tgt/update

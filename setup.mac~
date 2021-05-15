@@ -1,0 +1,12 @@
+##### setup.mac
+#
+/control/verbose 1
+##### setup.mac
+#
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+#
+### initialize here; not needed in any other .mac or in .cc
+/run/initialize
+

@@ -1,0 +1,27 @@
+##### target.mac
+#
+### for Mu formation fraction test, stop all muons, thick target
+#
+## remember to "make" in source directory to copy this to build directory
+
+### Mylar thickness (default 0.050 mm)
+/DiffMu/tgt/setMylarThick 0.0 um   
+
+### change fBCPsZ to, e.g., -30. mm
+### to accommodate thicker target
+### fBCPsZ < -1.*(BaseLyrThick + PerfLyrThick + 1.5mm) to avoid overlap of BCFrame and target
+/DiffMu/tgt/setBCPsZ -30. mm
+
+### target characteristics
+
+### thickness 25 mm, no ablation
+/DiffMu/tgt/setBaseLyrDens 23.9 mg/cm3
+/DiffMu/tgt/setBaseLyrThick 0. mm       # not defined in this target
+/DiffMu/tgt/setPerfLyrDens 23.9 mg/cm3
+/DiffMu/tgt/setPerfLyrThick 25. mm
+/DiffMu/tgt/setPerfDiameter 0. mm
+/DiffMu/tgt/setPerfPitch 0. mm
+/DiffMu/tgt/setPerfDepth 0. mm
+
+### update the parameters in geometry
+/DiffMu/tgt/update

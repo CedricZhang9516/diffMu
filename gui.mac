@@ -1,0 +1,48 @@
+##### gui.mac
+#
+# This file permits to customize, with commands,
+# the menu bar of the G4UIXm, G4UIQt, G4UIWin32 sessions.
+# It has no effect with G4UIterminal.
+#
+## File menu :
+/gui/addMenu file File
+/gui/addButton file Quit exit
+#
+## Run menu :
+/gui/addMenu run Run
+/gui/addButton run "beamOn 1" "/run/beamOn 1"
+/gui/addButton run "beamOn 10" "/run/beamOn 10"
+#/gui/addButton run run1 "/control/execute run1.mac"
+#
+## Gun menu using gps :
+/gui/addMenu gun Gun
+/gui/addButton gun "4.1 MeV"  "/gps/energy 4.1 MeV"
+/gui/addButton gun "3 MeV"  "/gps/energy 3.0 MeV"
+/gui/addButton gun "2.582 MeV, mu+ 23.5 MeV/c"   "/gps/energy 2.582 MeV"
+/gui/addButton gun "2.474 MeV, mu+ 23.0 MeV/c"   "/gps/energy 2.474 MeV"
+/gui/addButton gun "2.369 MeV, mu+ 22.5 MeV/c"   "/gps/energy 2.369 MeV"
+/gui/addButton gun "2 MeV"  "/gps/energy 2.0 MeV"
+/gui/addButton gun "e+"      "/gps/particle e+"
+/gui/addButton gun "mu+"      "/gps/particle mu+"
+/gui/addButton gun "pi+"     "/gps/particle pi+"
+/gui/addButton gun "proton"  "/gps/particle proton"
+#
+## Vis menu :
+#/gui/addMenu vis Vis
+#/gui/addButton vis DAWNFILE  "/control/execute visTutor/exN03Vis0.mac"
+#/gui/addButton vis OpenInventor "/control/execute visTutor/exN03Vis5.mac"
+#/gui/addButton vis TimeSlicing "/control/execute visTutor/exN03Vis12.mac"
+#/gui/addButton vis EmShower "/control/execute visTutor/exN03Vis13.mac"
+#
+## Viewer menu :
+/gui/addMenu viewer Viewer
+/gui/addButton viewer "Set style surface" "/vis/viewer/set/style surface"
+/gui/addButton viewer "Set style wireframe" "/vis/viewer/set/style wireframe"
+/gui/addButton viewer "Refresh viewer" "/vis/viewer/refresh"
+/gui/addButton viewer "Update viewer (interaction or end-of-file)" "/vis/viewer/update"
+/gui/addButton viewer "Flush viewer (= refresh + update)" "/vis/viewer/flush"
+/gui/addButton viewer "Update scene" "/vis/scene/notifyHandlers"
+#
+## To limit the output flow in the "dump" widget :
+/run/printProgress 100
+#

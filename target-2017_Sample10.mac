@@ -1,0 +1,25 @@
+##### target.mac
+#
+#### remember to "make" in source directory to copy this to build directory
+
+### Mylar thickness (default 0.050 mm)
+/DiffMu/tgt/setMylarThick 50.0 um   
+
+### target characteristics
+## https://docs.google.com/spreadsheets/d/1ld14mh6OVFwyKhithT8HrHpKrrl3G0rCNZTSCqjgUqA/edit#gid=1175252378
+
+### original aerogel parameters taken from MSR12-3C-T7 (sample 18)
+###  - density 23.9 mg/cm3 and thickness 8.8 mm, SK 20170710 email
+
+### 2017 Sample 10, MSR12-2d-T2, Y=16,19 ppt
+### WARNING: small pitch => many holes => slooowww visualizations
+/DiffMu/tgt/setBaseLyrDens 23.9 mg/cm3
+/DiffMu/tgt/setBaseLyrThick 0. mm       # not defined in this target
+/DiffMu/tgt/setPerfLyrDens 23.9 mg/cm3
+/DiffMu/tgt/setPerfLyrThick 8.8 mm
+/DiffMu/tgt/setPerfDiameter 0.100 mm
+/DiffMu/tgt/setPerfPitch 0.200 mm
+/DiffMu/tgt/setPerfDepth 1.5 mm
+
+### update the parameters in geometry
+/DiffMu/tgt/update

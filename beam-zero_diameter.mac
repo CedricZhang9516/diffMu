@@ -1,0 +1,35 @@
+##### beam.mac
+#
+#### beam characteristics
+#### for gps rather than pgun
+
+#/gps/verbose 1   # 0, 1, or 2 ; 1,2 for testing only
+
+### identify particle
+/gps/particle mu+
+#/gps/polarization 1. 0. 0. # use with care; set to -p/|p| in PrimaryGeneratorAction.cc
+
+# beam definition is a circle to fill collimator exit
+/gps/pos/type Beam
+/gps/pos/shape Circle
+# position at end of coll2 (-130 to -80), inner diameter 12 mm
+/gps/pos/centre 0. 0. -80. mm
+# /gps/pos/radius 6. mm
+/gps/pos/radius 0. mm  # zero diameter
+/gps/pos/sigma_r 0. mm
+
+# use /gps/ang/rot1 -1. 0. 0. gives 0 0 1 direction)
+## x' is in -x direction (180 degree rotn about y) 
+##     so z' becomes -z
+/gps/ang/rot1 -1. 0. 0.  
+/gps/ang/type beam2d
+# small divergence
+#/gps/ang/sigma_x 1. mrad
+#/gps/ang/sigma_y 1. mrad
+/gps/ang/sigma_x 0. mrad  # maintain zero diameter
+/gps/ang/sigma_y 0. mrad
+
+# 23.0 MeV/c is 2.474 MeV; +/- 0.46 MeV/c (2%) is +/- 0.1 MeV
+/gps/energy 2.474 MeV
+/gps/ene/type Gauss
+/gps/ene/sigma 0.1

@@ -1,0 +1,11 @@
+From your G4 work directory:
+
+1. tar -xzvf diffMu.tgz, to extract diffMu directory from diffMu.tgz
+2. mkdir diffMu-build, so you now have diffMu and diffMu-build directories
+3. cd diffMu-build
+4. cmake -DGeant4_DIR=$G4LIB ../diffMu 2>&1 |tee cmake.log
+5. make 2>&1 |tee make.log , or
+   make , or add -jN option for multithreading.
+6. ./diffMu -n 1000 2>&1 |tee diffMu.log , to run 1000 events, or
+   ./diffMu , to use visualization
+

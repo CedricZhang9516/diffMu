@@ -1,0 +1,58 @@
+##### viewer.mac
+#
+# Camera and lights commands
+/vis/viewer/set/upVector 0 1 0
+/vis/viewer/scaleTo 1 1 1
+#
+/vis/viewer/set/background 1. 1. 1. 1.
+/vis/viewer/set/defaultColour 0. 0. 0. 1.
+/vis/viewer/set/defaultTextColour 0 0 1 1
+
+# Drawing style commands
+/vis/viewer/set/style surface
+/vis/viewer/set/hiddenEdge true
+/vis/viewer/set/auxiliaryEdge false
+/vis/viewer/set/hiddenMarker false
+/vis/viewer/set/globalLineWidthScale 1
+/vis/viewer/set/globalMarkerScale 1
+
+# Touchable commands
+/vis/set/touchable World 0 Vacsys 0
+/vis/touchable/set/colour 0.1 0.1 0.1 0.1
+/vis/touchable/set/visibility true
+
+/vis/set/touchable World 0 Mylar 0
+/vis/touchable/set/colour 0. 1. 1. 1. 
+/vis/touchable/set/visibility true
+
+/vis/set/touchable World 0 MylarFlange 0
+/vis/touchable/set/colour 0.4 0.4 0.4 0.1
+/vis/touchable/set/visibility true
+
+/vis/set/touchable World 0 BCFrame 0
+/vis/touchable/set/colour 0.2 0.2 0.2 0.1
+/vis/touchable/set/visibility true
+
+/vis/set/touchable World 0 BC 0
+/vis/touchable/set/colour 0. 0.2 0.2 0.1
+#/vis/set/touchable World 0 BC 0
+/vis/touchable/set/visibility true
+
+//vis/set/touchable World 0 Target 0 BaseLyr 0
+/vis/touchable/set/colour 0. 0.8 0.8 1.
+/vis/touchable/set/visibility true
+
+/vis/set/touchable World 0 Target 0 PerfLyr 0
+/vis/touchable/set/colour 0. 0.9 0.9 1.
+/vis/touchable/set/visibility true
+
+/vis/set/touchable World 0 LaserRegion 0
+/vis/touchable/set/colour 0.9 0. 0.9 0.1
+/vis/touchable/set/visibility true
+
+/vis/set/touchable World 0 Beamstop 0
+/vis/touchable/set/colour 1. 1. 1. 0.1
+/vis/touchable/set/visibility true
+
+
+

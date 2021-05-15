@@ -1,0 +1,50 @@
+##### beam.mac
+#
+#### beam characteristics
+#### for gps rather than pgun
+
+#/gps/verbose 1   # 0, 1, or 2 ; 1,2 for testing only
+
+### identify particle
+/gps/particle mu+
+#/gps/polarization 1. 0. 0. # use with care; set to -p/|p| in PrimaryGeneratorAction.cc
+
+#/gps/position 0 0 -79. mm  # overridden by /gps/pos/center
+
+## xrms from data: observe 5. in [-12,15] from run 2485
+## and 58% target stops at 22.0 MeV/c
+
+### see UserDoc Sec 2.7 and test30.g4mac in examples/extended/eventgenerator/exgps/macros
+
+## coll1 (-180 to -130, ID=16)
+## coll2 (-130 to -80, ID=12)
+
+## at target xrms=4.2,dxrms=0.046 TbScCm79R4Sr2Tb2dSxy50mr
+## at target xrms=3.5,dxrms=0.029 TbScCm79R6Sr0Tb2dSxy30mr
+/gps/pos/type Beam
+/gps/pos/shape Circle
+/gps/pos/centre 0. 0. -79. mm  # at end of coll2 (-130 to -80), inner diameter 12 mm
+#/gps/pos/radius 1. mm
+/gps/pos/radius 6. mm
+/gps/pos/sigma_r 0. mm
+
+## entrance to coll1 for comparison, realistic big beam but inefficient
+## at target xrms=4.0, dxrms=0.029 TbScCm190R6Sr4Tb2dSxy50mr
+#/gps/pos/centre 0. 0. -190. mm  # at end of coll2 (-130 to -80), inner diameter 12 mm
+#/gps/pos/radius 6. mm
+#/gps/pos/sigma_r 4. mm
+
+#/gps/direction 0. 0. 1.   # use /gps/ang (/rot1 -1. 0. 0. gives 0 0 1 direction)
+## x' is in -x direction (180 degree rotn about y) 
+##     so z' becomes -z
+/gps/ang/rot1 -1. 0. 0.  
+/gps/ang/type beam2d
+#/gps/ang/sigma_x 30. mrad
+#/gps/ang/sigma_y 30. mrad
+/gps/ang/sigma_x 1. mrad
+/gps/ang/sigma_y 1. mrad
+
+# 23.0 MeV/c is 2.474 MeV; +/- 0.46 MeV/c (2%) is +/- 0.1 MeV
+/gps/energy 2.474 MeV
+/gps/ene/type Gauss
+/gps/ene/sigma 0.1
