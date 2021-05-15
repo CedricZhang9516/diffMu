@@ -280,6 +280,7 @@ void HistoManager::save()
   if (rootFile) {
     rootFile->Write();       // Writing the histograms to the file
     //rootFile->Write(rootvec);
+    G4cout << "\n----> Histogram Tree is written \n" << G4endl;
     rootFile->Close();        // and closing the tree (and the file)
     G4cout << "\n----> Histogram Tree is saved \n" << G4endl;
   }
