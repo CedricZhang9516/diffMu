@@ -1,15 +1,15 @@
 ##### setup.mac
 #
-/control/verbose 1
+#/control/verbose 1
 ##### setup.mac
 #
-/run/verbose 0
-/event/verbose 0
-/tracking/verbose 0
+#/run/verbose 0
+#/event/verbose 0
+#/tracking/verbose 0
 #
 ### eloss at low energies; does not solve problem
 #/process/eLoss/minKinEnergy 100 eV
 #
 ### initialize here if not in any other .mac or in .cc
-/run/initialize
+#/run/initialize
 

@@ -203,6 +203,9 @@ int main(int argc,char** argv)
   auto runManager = new G4RunManager;
 #endif
 
+  //debug, Cedric
+  runManager->SetNumberOfThreads(0);
+
   // Set mandatory initialization classes
   //
   auto detector = new DetectorConstruction();
