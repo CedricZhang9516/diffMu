@@ -32,13 +32,17 @@ void ActionInitialization::Build() const
   //  auto event_action = new EventAction(histo);
   //  auto stepping_action = new SteppingAction(event_action);
   //  auto stacking_action = new StackingAction();
-
+  G4cout << "\n ActionInitialization### 1 \n" << G4endl;
   SetUserAction(new PrimaryGeneratorAction(fHistoManager));
-
+  G4cout << "\n ActionInitialization### 2 \n" << G4endl;
   SetUserAction(new RunAction(fHistoManager));
+  G4cout << "\n ActionInitialization### 3 \n" << G4endl;
   auto eventAction = new EventAction(fHistoManager);
+  G4cout << "\n ActionInitialization### 4 \n" << G4endl;
   SetUserAction(eventAction);
+  G4cout << "\n ActionInitialization### 5 \n" << G4endl;
   SetUserAction(new SteppingAction(eventAction));
+  G4cout << "\n ActionInitialization### 6 \n" << G4endl;
   SetUserAction(new StackingAction());
 }
 
