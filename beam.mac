@@ -3,8 +3,14 @@
 #### beam characteristics
 #### for gps rather than pgun
 
+/run/initialize
+
 /gps/verbose 1   # 0, 1, or 2 ; 1,2 for testing only
 
+### identify particle
+/gps/particle mu+
+#/gps/particle proton
+#/gps/polarization 1. 0. 0. # use with care; set to -p/|p| in PrimaryGeneratorAction.cc
 
 ### beam definition is a circle to fill collimator exit
 /gps/pos/type Beam
@@ -28,8 +34,3 @@
 /gps/energy 2.474 MeV
 /gps/ene/type Gauss
 /gps/ene/sigma 0.1
-
-### identify particle
-/gps/particle mu+
-#/gps/particle proton
-#/gps/polarization 1. 0. 0. # use with care; set to -p/|p| in PrimaryGeneratorAction.cc
