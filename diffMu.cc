@@ -44,6 +44,9 @@
 //#include "G4VisExecutive.hh"
 //#include "G4UIExecutive.hh"
 
+#include "G4GeneralParticleSource.hh"
+
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 namespace {
