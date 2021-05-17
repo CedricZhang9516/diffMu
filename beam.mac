@@ -6,7 +6,8 @@
 #/gps/verbose 1   # 0, 1, or 2 ; 1,2 for testing only
 
 ### identify particle
-/gps/particle mu+
+#/gps/particle mu+
+/gps/particle proton
 #/gps/polarization 1. 0. 0. # use with care; set to -p/|p| in PrimaryGeneratorAction.cc
 
 ### beam definition is a circle to fill collimator exit
@@ -19,9 +20,9 @@
 /gps/pos/sigma_r 0. mm
 
 ### use /gps/ang/rot1 -1. 0. 0. gives 0 0 1 direction)
-### x' is in -x direction (180 degree rotn about y) 
+### x' is in -x direction (180 degree rotn about y)
 ###     so z' becomes -z
-/gps/ang/rot1 -1. 0. 0.  
+/gps/ang/rot1 -1. 0. 0.
 /gps/ang/type beam2d
 ### small divergence; adjust to fit transverse size of target stops
 /gps/ang/sigma_x 1. mrad

@@ -12,8 +12,8 @@
 #include "G4ParticleTable.hh"
 #include "G4ParticleDefinition.hh"
 
-//#include "G4TransportationManager.hh" 
-//#include "G4Navigator.hh" 
+//#include "G4TransportationManager.hh"
+//#include "G4Navigator.hh"
 
 #include "G4SystemOfUnits.hh"
 //#include "G4RandomTools.hh"
@@ -51,7 +51,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction(HistoManager* histo)
   //  //const G4double MuInitSizeXY = 0.*CLHEP::cm;
   //  //const G4double MuInitSizeZ = 0.*CLHEP::cm;
   //  //const G4double MuInitOffsZ = -0.5*CLHEP::cm;
-  //  
+  //
   //  fParticleGun->SetParticlePosition(G4ThreeVector(0.,0.,-0.5*CLHEP::cm));
   //  fParticleGun->SetParticleMomentumDirection(G4RandomDirection());
   //  fParticleGun->SetParticleEnergy(0.025*CLHEP::eV);
@@ -95,12 +95,12 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   //
   //  SpeedSq = MuZeroDiffusion::MuSpeedMPSq*MuZeroDiffusion::MaxwellSpeedNorm();
   //  EkMu = 0.5*MuZeroDiffusion::MuMass_c2*SpeedSq/CLHEP::c_squared;
-  ////  G4cout << "PrimaryGeneratorAction GenPrim EkMu/eV, x,y,z/mm: " 
-  ////  	 << EkMu/( CLHEP::eV ) << "," 
-  //// 	 << x0/( CLHEP::mm ) << "," 
-  //// 	 << y0/( CLHEP::mm ) << "," 
+  ////  G4cout << "PrimaryGeneratorAction GenPrim EkMu/eV, x,y,z/mm: "
+  ////  	 << EkMu/( CLHEP::eV ) << ","
+  //// 	 << x0/( CLHEP::mm ) << ","
+  //// 	 << y0/( CLHEP::mm ) << ","
   //// 	 << z0/( CLHEP::mm ) <<  G4endl;
-  //  
+  //
   //  fParticleGun->SetParticlePosition(G4ThreeVector(x0,y0,z0));
   //  fParticleGun->SetParticleMomentumDirection(G4RandomDirection());
   //  fParticleGun->SetParticleEnergy(EkMu);
