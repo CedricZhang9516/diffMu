@@ -1,10 +1,10 @@
-##### init.mac 
+##### init.mac
 #
 ## Set some default verbose
 #
-/control/verbose 2
-/control/saveHistory
-/run/verbose 2
+#/control/verbose 2
+#/control/saveHistory
+#/run/verbose 2
 #
 #/event/verbose 0
 #/tracking/verbose 0
