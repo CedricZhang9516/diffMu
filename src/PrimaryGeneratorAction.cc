@@ -48,6 +48,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction(HistoManager* histo)
   // this commented section can be used for tests of diffusion in the aerogel
   // to start muonium diffusion in a restricted volume
   //
+    G4cout << "start PrimaryGeneratorAction "<< G4endl;
     G4int n_particle = 1;
     fParticleGun  = new G4ParticleGun(n_particle);
   //
@@ -93,7 +94,8 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 
   const G4double MuInitSizeXY = 0.*CLHEP::cm;
   const G4double MuInitSizeZ = 0.*CLHEP::cm;
-  const G4double MuInitOffsZ = -0.5*CLHEP::cm;
+  //const G4double MuInitOffsZ = -0.5*CLHEP::cm;
+  const G4double MuInitOffsZ = -0.2*CLHEP::cm;
 
   // this commented section can be used for tests of diffusion in the aerogel
   // to start muonium diffusion in a restricted volume

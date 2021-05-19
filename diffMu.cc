@@ -103,6 +103,8 @@ int main(int argc,char** argv)
   G4double pmom, dpg;
   G4double abdiameter, abpitch, abdepth, abdensity;
 
+  nThreads = 0;
+
   for ( G4int i=1; i<argc; i=i+2 ) {
     if ( G4String(argv[i]) == "-h" ) {
       PrintUsage();
@@ -198,16 +200,20 @@ int main(int argc,char** argv)
   // Construct the default run manager
   //
 #ifdef G4MULTITHREADED
-  auto runManager = new G4MTRunManager;
+  //auto runManager = new G4MTRunManager;
+  auto runManager = new G4RunManager;
+  G4cout << "G4MULTITHREADED - Cedric" << G4endl;
   if ( nThreads > 0 ) {
-    runManager->SetNumberOfThreads(nThreads);
+    //G4cout << "G4MULTITHREADED n = 0 - Cedric" << G4endl;
+    //runManager->SetNumberOfThreads(nThreads);
   }
 #else
   auto runManager = new G4RunManager;
+  G4cout << "Not G4MULTITHREADED  - Cedric" << G4endl;
 #endif
 
   //debug, Cedric
-  runManager->SetNumberOfThreads(0);
+  //runManager->SetNumberOfThreads(0);
 
   // Set mandatory initialization classes
   //

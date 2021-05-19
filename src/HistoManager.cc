@@ -213,7 +213,8 @@ void HistoManager::book()
     {  -xyworld, xyworld, -xyworld, xyworld},
     {  -xyem, xyem, -xyem, xyem},
     {  -zem, zem, -xyem, xyem},
-    {  -zem, zem, 15.048},
+    //{  -zem, zem, 15.048},
+    {  -zem, zem, -zem, zem },
 
     {  0., 0.010, -10., 0.},
     {  0., mus_max, 0., mus_max},
@@ -271,6 +272,8 @@ void HistoManager::book()
 
 
   G4cout << "\n----> Histogram file is opened in " << rootFileName << G4endl;
+
+
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

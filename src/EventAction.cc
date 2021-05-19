@@ -14,8 +14,9 @@
 
 EventAction::EventAction(HistoManager* histo)
   :fHistoManager(histo)
-{  
+{
   fPrintModulo = 100;
+  G4cout << "\n initialization of EventAction " << G4endl;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -26,14 +27,15 @@ EventAction::~EventAction()
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void EventAction::BeginOfEventAction(const G4Event* evt)
-{  
+{
+  G4cout << "\n BeginOfEventAction " << G4endl;
   runNumber = fHistoManager->GetRunNumber();
   evtNb = evt->GetEventID();
   fHistoManager->SetEventNumber(evtNb);
   ResetEvent();
-  if (evtNb%fPrintModulo == 0) 
+  if (evtNb%fPrintModulo == 0)
     G4cout << "\n---> Begin of event: " << evtNb << G4endl;
-  
+
   //  This doesn't seem to work...
   //  memset(nhits, 0, sizeof(nhits[0]*nscints));
   //  memset(tdc, -1.0*CLHEP::nanosecond, sizeof(tdc[0][0]*nscints*MAX_NHITS));
@@ -57,7 +59,7 @@ void EventAction::EndOfEventAction(const G4Event*)
   fHistoManager->FillHisto(ih++, pxInit);
   fHistoManager->FillHisto(ih++, pyInit);
   fHistoManager->FillHisto(ih++, pzInit);
-  
+
   if (tmuonDecay > 0.) {
     ih = 9;
     fHistoManager->FillHisto(ih++, xmuonDecay/CLHEP::mm);
@@ -72,7 +74,7 @@ void EventAction::EndOfEventAction(const G4Event*)
     }
     else if (dxPosi < 0.) {
       fHistoManager->FillHisto(17, tmuonDecay/CLHEP::microsecond);
-    }	  
+    }
   }
 
   if ( !fNewMuInit) {             // Mu was formed
@@ -97,7 +99,7 @@ void EventAction::EndOfEventAction(const G4Event*)
       fHistoManager->FillHisto(ih++, dyMuEmit);
       fHistoManager->FillHisto(ih++, dzMuEmit);
       fHistoManager->FillHisto(ih++, std::log10(ekMuEmit/CLHEP::eV));
-      fHistoManager->FillHisto(ih++, tMuEmit/CLHEP::microsecond);	  
+      fHistoManager->FillHisto(ih++, tMuEmit/CLHEP::microsecond);
     }
     ih = 37;
     fHistoManager->FillHisto(ih++, xMuDecay/CLHEP::mm);
@@ -110,7 +112,7 @@ void EventAction::EndOfEventAction(const G4Event*)
     fHistoManager->FillHisto(ih++, tMuDecay/CLHEP::microsecond);
     if ( !fNewMuEmit ) {          // Mu was emitted
       ih = 45;
-      fHistoManager->FillHisto(ih++, zMuDecay/CLHEP::mm);	
+      fHistoManager->FillHisto(ih++, zMuDecay/CLHEP::mm);
       fHistoManager->FillHisto(ih++, tMuDecay/CLHEP::microsecond);
     }
     if (dxPosi > 0.) {
@@ -151,14 +153,14 @@ void EventAction::EndOfEventAction(const G4Event*)
   // 2D hists 5,6 is filled in SteppingAction
   if ( (tMuLRIn < 20.*CLHEP::microsecond) && (tMuLRDis < 20.*CLHEP::microsecond) ) {
     fHistoManager->Fill2DHisto(6, tMuLRIn/CLHEP::microsecond, tMuLRDis/CLHEP::microsecond);
-  }  
-  
+  }
+
   //fill ntuple(s)
   //
   //  fHistoManager->FillNtuple1(runNumber,evtNb,xInit/CLHEP::mm,yInit/CLHEP::mm,zInit/CLHEP::mm,
   //			     xmuDecay/CLHEP::mm,ymuDecay/CLHEP::mm,zmuDecay/CLHEP::cm,tmuDecay/CLHEP::microsecond,
   //			     nhits,tdc,edep,nscints);
-}  
+}
 
 void EventAction::SetIfNewEvent(G4bool lval)
 {  //set flag to identify a new event for step evaluation

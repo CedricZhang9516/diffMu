@@ -50,6 +50,7 @@ void ActionInitialization::Build() const
 
 void ActionInitialization::BuildForMaster() const
 {
+  G4cout << "\n ActionInitialization### 7 \n" << G4endl;
   SetUserAction(new RunAction(fHistoManager));
 }
 
