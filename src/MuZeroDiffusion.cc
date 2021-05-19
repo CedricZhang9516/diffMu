@@ -12,49 +12,49 @@
 #include "CLHEP/Random/RandExponential.h"
 
 ///// initialize static doubles outside of functions; is there a better way? this is not G4 approved!
-//const G4double MuZeroDiffusion::TempK = 300.*CLHEP::kelvin;  // 
-//const G4double MuZeroDiffusion::DiffCon = 10.*CLHEP::cm2/CLHEP::second;  // diffuson constant
+const G4double MuZeroDiffusion::TempK = 300.*CLHEP::kelvin;  //
+const G4double MuZeroDiffusion::DiffCon = 10.*CLHEP::cm2/CLHEP::second;  // diffuson constant
 //
 ////// NOT USED
 ////G4double MuZeroDiffusion::Eevxslow = 1.e-6*CLHEP::eV;   // down to 0.001 meV
-//const G4double MuZeroDiffusion::Eevxshigh = 1.0*CLHEP::eV;
+const G4double MuZeroDiffusion::Eevxshigh = 1.0*CLHEP::eV;
 //
 ////G4double MuZeroDiffusion::MuMass = MuZero::Muonium()->GetPDGMass();  // seg fault
 ////const G4double MuZeroDiffusion::MuMass = 105.6583715*CLHEP::MeV/CLHEP::c_squared;
-//const G4double MuZeroDiffusion::MuMass_c2 = 105.6583715*CLHEP::MeV;
+const G4double MuZeroDiffusion::MuMass_c2 = 105.6583715*CLHEP::MeV;
 //
-//const G4double MuZeroDiffusion::MuSpeedMPSq = (2.*CLHEP::k_Boltzmann*TempK/(MuMass_c2))*CLHEP::c_squared;
-//const G4double MuZeroDiffusion::MuSpeedMnSq = (8.*CLHEP::k_Boltzmann*TempK/(CLHEP::pi*MuMass_c2 ))*CLHEP::c_squared;
-//const G4double MuZeroDiffusion::MuSpeedMn = std::sqrt(MuSpeedMnSq);  // mean speed
-//const G4double MuZeroDiffusion::MeanFreePath = 12.*DiffCon/(CLHEP::pi*MuSpeedMn);   
+const G4double MuZeroDiffusion::MuSpeedMPSq = (2.*CLHEP::k_Boltzmann*TempK/(MuMass_c2))*CLHEP::c_squared;
+const G4double MuZeroDiffusion::MuSpeedMnSq = (8.*CLHEP::k_Boltzmann*TempK/(CLHEP::pi*MuMass_c2 ))*CLHEP::c_squared;
+const G4double MuZeroDiffusion::MuSpeedMn = std::sqrt(MuSpeedMnSq);  // mean speed
+const G4double MuZeroDiffusion::MeanFreePath = 12.*DiffCon/(CLHEP::pi*MuSpeedMn);
 ////const G4double MuZeroDiffusion::MeanFreePath = 3.*DiffCon/(0.785*MuSpeedMn);   // check factor in sim
 
 
 MuZeroDiffusion::MuZeroDiffusion(const G4String& aName, G4ProcessType aType)
-  : G4VDiscreteProcess(aName, aType) 
+  : G4VDiscreteProcess(aName, aType)
 {
   G4cout.precision(5);
   G4cout << "\n==================== MuZeroDiffusion parameters ==================== "
 	 << G4endl;
-  G4cout << "T (K), D (cm^2/s) : " 
+  G4cout << "T (K), D (cm^2/s) : "
 	 << GetTempK()/CLHEP::kelvin
 	 << ", "
 	 << GetDiffCon()/(CLHEP::cm2/CLHEP::second)
 	 << G4endl;
-  G4cout << "Mu Mass (MeV/c^2) : " 
+  G4cout << "Mu Mass (MeV/c^2) : "
 	 << GetMuMass()/(CLHEP::MeV)
 	 << G4endl;
-  G4cout << "Mean speed squared, most probable speed squared (cm/us)^2 : " 
+  G4cout << "Mean speed squared, most probable speed squared (cm/us)^2 : "
 	 << GetMuMeanSpeedSq()/( CLHEP::cm2/( CLHEP::microsecond*CLHEP::microsecond) )
 	 << ", "
 	 << GetMuMPSpeedSq()/( CLHEP::cm2/(CLHEP::microsecond*CLHEP::microsecond) )
 	 << G4endl;
-  G4cout << "Mean thermal energy, most probable thermal energy (eV) : " 
+  G4cout << "Mean thermal energy, most probable thermal energy (eV) : "
 	 << 0.5*GetMuMass()*GetMuMeanSpeedSq()/CLHEP::c_squared/( CLHEP::eV )
 	 << ", "
 	 << 0.5*GetMuMass()*GetMuMPSpeedSq()/CLHEP::c_squared/( CLHEP::eV )
 	 << G4endl;
-  G4cout << "Mean speed (cm/us), mean diffusion free path (um): " 
+  G4cout << "Mean speed (cm/us), mean diffusion free path (um): "
 	 << GetMuMeanSpeed()/( CLHEP::cm/CLHEP::microsecond )
 	 << ", "
 	 << GetDiffFreePath()/( CLHEP::micrometer )
@@ -105,7 +105,7 @@ G4double MuZeroDiffusion::GetMeanFreePath( const G4Track& aTrack,
 	  G4cout << "\n ++++++++ " << G4endl;
 	  }
       }
-      else {	
+      else {
 	// find diffusion mfp in aerogel layers
 	mfp = GetDiffFreePath();
 	*condition = NotForced;
@@ -141,8 +141,8 @@ MuZeroDiffusion::PostStepDoIt( const G4Track& aTrack,
 {
 
   particleTable=G4ParticleTable::GetParticleTable();
- 
-  //Initialize particle change by setting member properties of new particle 
+
+  //Initialize particle change by setting member properties of new particle
   //to the post-diffusion Mu properties
   //aParticleChange.Clear();
   aParticleChange.Initialize(aTrack);
@@ -150,7 +150,7 @@ MuZeroDiffusion::PostStepDoIt( const G4Track& aTrack,
   // For elastic scattering, _any_ result is considered an interaction (from G4HadronElasticProcess.cc)
   //ClearNumberOfInteractionLengthLeft();
 
-  // step information 
+  // step information
   G4StepPoint* postStepPoint = aStep.GetPostStepPoint();
   // boundary step, no change in track parameters (energy, direction)
   if(postStepPoint->GetStepStatus()==fGeomBoundary)
@@ -183,13 +183,13 @@ MuZeroDiffusion::PostStepDoIt( const G4Track& aTrack,
   }
   else if ( mat_name == "G4_Galactic") {
     // if there is a step in vacuum, no changes to track
-    aParticleChange.ProposeTrackStatus(fAlive);    
+    aParticleChange.ProposeTrackStatus(fAlive);
   }
   else {
     // stop muon but let it decay, if not in vacuum or target material
     aParticleChange.ProposeEnergy(0.);
-    aParticleChange.ProposeTrackStatus(fStopButAlive) ;  
-    //    G4cout << "MuZeroDiffusion::PostStepDoIt Not aerogel or vacuum ProposeEnergy 0 mat_name: " 
+    aParticleChange.ProposeTrackStatus(fStopButAlive) ;
+    //    G4cout << "MuZeroDiffusion::PostStepDoIt Not aerogel or vacuum ProposeEnergy 0 mat_name: "
     //	   <<  mat_name << G4endl;
   }
 

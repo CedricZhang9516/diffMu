@@ -48,9 +48,6 @@ PrimaryGeneratorAction::PrimaryGeneratorAction(HistoManager* histo)
   //  //  const G4double MuInitOffsZ = -0.5*MuInitSizeZ;
   //  //    or
   //  // point source
-  const G4double MuInitSizeXY = 0.*CLHEP::cm;
-  const G4double MuInitSizeZ = 0.*CLHEP::cm;
-  const G4double MuInitOffsZ = -0.5*CLHEP::cm;
   //
     //fParticleGun->SetParticlePosition(G4ThreeVector(0.,0.,-0.5*CLHEP::cm));
     //fParticleGun->SetParticlePosition(G4ThreeVector(0.,0.,-0.5*CLHEP::cm));
@@ -76,6 +73,10 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   //fParticleGun->SetParticlePolarization(-(fParticleGun->GetParticleMomentumDirection()));
   //fParticleGun->GeneratePrimaryVertex(anEvent);
   //fHistoManager->IncEventsPrimaryAll();
+
+  const G4double MuInitSizeXY = 0.*CLHEP::cm;
+  const G4double MuInitSizeZ = 0.*CLHEP::cm;
+  const G4double MuInitOffsZ = -0.5*CLHEP::cm;
 
   // this commented section can be used for tests of diffusion in the aerogel
   // to start muonium diffusion in a restricted volume

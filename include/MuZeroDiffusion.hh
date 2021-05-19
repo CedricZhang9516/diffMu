@@ -10,7 +10,7 @@
 #include "G4VDiscreteProcess.hh"
 #include "G4ParticleTable.hh"
 
-class MuZeroDiffusion : public G4VDiscreteProcess 
+class MuZeroDiffusion : public G4VDiscreteProcess
 {
 public:
 
@@ -23,9 +23,12 @@ public:
   //  virtual G4VParticleChange* AlongStepDoIt(const G4Track&, const G4Step& );
   virtual G4bool IsApplicable(const G4ParticleDefinition&);
 
-  G4ParticleTable* particleTable; 
+  static G4double MaxwellSpeedNorm();
+
+  G4ParticleTable* particleTable;
   G4ParticleDefinition* particle;
   G4Track* aSecondary;
+
 
 protected:
 
@@ -33,7 +36,7 @@ protected:
 
 private:
 
-  static G4double MaxwellSpeedNorm();
+
   // parameters for diffusion are stored in inline functions
   static G4double GetMuMass() {     // in MeV/c^2
     return G4ParticleTable::GetParticleTable()->FindParticle("Mu")->GetPDGMass()*CLHEP::MeV;
