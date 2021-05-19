@@ -27,20 +27,20 @@ PrimaryGeneratorAction::PrimaryGeneratorAction(HistoManager* histo)
 
 {
   // use gps for beam
-  fParticleGun = new G4GeneralParticleSource();
+  //fParticleGun = new G4GeneralParticleSource();
 
   // this commented section can be used for tests of diffusion in the aerogel
   // to start muonium diffusion in a restricted volume
   //
-  //  G4int n_particle = 1;
-  //  fParticleGun  = new G4ParticleGun(n_particle);
+    G4int n_particle = 1;
+    fParticleGun  = new G4ParticleGun(n_particle);
   //
   //  // default particle
-  //  G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
-  //  G4String particleName;
-  //  G4ParticleDefinition* particle
-  //    = particleTable->FindParticle(particleName="Mu");
-  //  fParticleGun->SetParticleDefinition(particle);
+    G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
+    G4String particleName;
+    G4ParticleDefinition* particle
+      = particleTable->FindParticle(particleName="Mu");
+    fParticleGun->SetParticleDefinition(particle);
   //
   //  // dimension and z placement of volume for particle generation
   //  //  const G4double MuInitSizeXY = 1.0*CLHEP::cm;
@@ -52,9 +52,10 @@ PrimaryGeneratorAction::PrimaryGeneratorAction(HistoManager* histo)
   //  //const G4double MuInitSizeZ = 0.*CLHEP::cm;
   //  //const G4double MuInitOffsZ = -0.5*CLHEP::cm;
   //
-  //  fParticleGun->SetParticlePosition(G4ThreeVector(0.,0.,-0.5*CLHEP::cm));
-  //  fParticleGun->SetParticleMomentumDirection(G4RandomDirection());
-  //  fParticleGun->SetParticleEnergy(0.025*CLHEP::eV);
+    //fParticleGun->SetParticlePosition(G4ThreeVector(0.,0.,-0.5*CLHEP::cm));
+    fParticleGun->SetParticlePosition(G4ThreeVector(0.,0.,-0.5*CLHEP::cm));
+    fParticleGun->SetParticleMomentumDirection(G4RandomDirection());
+    fParticleGun->SetParticleEnergy(0.025*CLHEP::eV);
 
 }
 
