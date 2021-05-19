@@ -3,9 +3,9 @@
 /control/verbose 1
 ##### setup.mac
 #
-/run/verbose 1
-/event/verbose 1
-/tracking/verbose 1
+/run/verbose 2
+/event/verbose 2
+/tracking/verbose 2
 #
 ### eloss at low energies; does not solve problem
 #/process/eLoss/minKinEnergy 100 eV
