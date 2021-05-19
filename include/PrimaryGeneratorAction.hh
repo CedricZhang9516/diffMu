@@ -34,16 +34,16 @@ private:
   HistoManager* fHistoManager;
 
   //  // distribution in this volume
-  //  const G4double MuInitSizeXY;
-  //  const G4double MuInitSizeZ;
-  //  const G4double MuInitOffsZ;
-  //  // position in this volume
-  //  G4double x0;
-  //  G4double y0;
-  //  G4double z0;
-  //
-  //  G4double SpeedSq;
-  //  G4double EkMu;
+  const G4double MuInitSizeXY;
+  const G4double MuInitSizeZ;
+  const G4double MuInitOffsZ;
+  // position in this volume
+  G4double x0;
+  G4double y0;
+  G4double z0;
+
+  G4double SpeedSq;
+  G4double EkMu;
 
 };
 
