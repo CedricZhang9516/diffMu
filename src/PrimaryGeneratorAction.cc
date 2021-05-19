@@ -3,17 +3,17 @@
 
 #include "PrimaryGeneratorAction.hh"
 #include "HistoManager.hh"
-//#include "MuZeroDiffusion.hh"
+#include "MuZeroDiffusion.hh"
 
 #include "G4Event.hh"
 #include "G4GeneralParticleSource.hh"
-//#include "G4RunManager.hh"
+#include "G4RunManager.hh"
 #include "G4ParticleGun.hh"
 #include "G4ParticleTable.hh"
 #include "G4ParticleDefinition.hh"
 
-//#include "G4TransportationManager.hh"
-//#include "G4Navigator.hh"
+#include "G4TransportationManager.hh"
+#include "G4Navigator.hh"
 
 #include "G4SystemOfUnits.hh"
 #include "G4RandomTools.hh"
