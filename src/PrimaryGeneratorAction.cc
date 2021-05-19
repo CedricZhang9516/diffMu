@@ -80,7 +80,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   // this commented section can be used for tests of diffusion in the aerogel
   // to start muonium diffusion in a restricted volume
   //
-  //  G4Navigator* theNavigator = G4TransportationManager::GetTransportationManager()->GetNavigatorForTracking();
+  G4Navigator* theNavigator = G4TransportationManager::GetTransportationManager()->GetNavigatorForTracking();
   //
   //  // find position and make sure it is in volume of Aerogelxxxx
   while(true) {
