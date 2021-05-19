@@ -83,6 +83,7 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction()
 
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
+  G4cout << "start PrimaryGeneratorAction:GeneratePrimaries "<< G4endl;
   //this function is called at the begining of each event
   //
 
