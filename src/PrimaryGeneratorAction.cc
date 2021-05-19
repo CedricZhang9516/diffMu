@@ -19,6 +19,22 @@
 #include "G4RandomTools.hh"
 #include "G4RandomDirection.hh"
 
+//const G4double TempK = 300.*CLHEP::kelvin;  //
+//const G4double DiffCon = 10.*CLHEP::cm2/CLHEP::second;  // diffuson constant
+////
+//////// NOT USED
+//////G4double Eevxslow = 1.e-6*CLHEP::eV;   // down to 0.001 meV
+//const G4double Eevxshigh = 1.0*CLHEP::eV;
+////
+//////G4double MuMass = MuZero::Muonium()->GetPDGMass();  // seg fault
+//////const G4double MuMass = 105.6583715*CLHEP::MeV/CLHEP::c_squared;
+//const G4double MuMass_c2 = 105.6583715*CLHEP::MeV;
+////
+//const G4double MuSpeedMPSq = (2.*CLHEP::k_Boltzmann*TempK/(MuMass_c2))*CLHEP::c_squared;
+//const G4double MuSpeedMnSq = (8.*CLHEP::k_Boltzmann*TempK/(CLHEP::pi*MuMass_c2 ))*CLHEP::c_squared;
+//const G4double MuSpeedMn = std::sqrt(MuSpeedMnSq);  // mean speed
+//const G4double MeanFreePath = 12.*DiffCon/(CLHEP::pi*MuSpeedMn);
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 PrimaryGeneratorAction::PrimaryGeneratorAction(HistoManager* histo)
@@ -96,8 +112,15 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
     fHistoManager->IncEventsPrimaryFail();
   }
 
-  SpeedSq = MuZeroDiffusion::MuSpeedMPSq*MuZeroDiffusion::MaxwellSpeedNorm();
-  EkMu = 0.5*MuZeroDiffusion::MuMass_c2*SpeedSq/CLHEP::c_squared;
+  const G4double TempK = 300.*CLHEP::kelvin;  //
+
+  const G4double MuMass_c2 = 105.6583715*CLHEP::MeV;
+  const G4double MuSpeedMPSq = (2.*CLHEP::k_Boltzmann*TempK/(MuMass_c2))*CLHEP::c_squared;
+  //const G4double MuSpeedMnSq = (8.*CLHEP::k_Boltzmann*TempK/(CLHEP::pi*MuMass_c2 ))*CLHEP::c_squared;
+  //const G4double MuSpeedMn = std::sqrt(MuSpeedMnSq);  // mean speed
+
+  SpeedSq = MuSpeedMPSq*MuZeroDiffusion::MaxwellSpeedNorm();
+  EkMu = 0.5*MuMass_c2*SpeedSq/CLHEP::c_squared;
   G4cout << "PrimaryGeneratorAction GenPrim EkMu/eV, x,y,z/mm: "
   	 << EkMu/( CLHEP::eV ) << ","
  	 << x0/( CLHEP::mm ) << ","

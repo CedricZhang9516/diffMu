@@ -12,21 +12,21 @@
 #include "CLHEP/Random/RandExponential.h"
 
 ///// initialize static doubles outside of functions; is there a better way? this is not G4 approved!
-const G4double MuZeroDiffusion::TempK = 300.*CLHEP::kelvin;  //
-const G4double MuZeroDiffusion::DiffCon = 10.*CLHEP::cm2/CLHEP::second;  // diffuson constant
-//
-////// NOT USED
-////G4double MuZeroDiffusion::Eevxslow = 1.e-6*CLHEP::eV;   // down to 0.001 meV
-const G4double MuZeroDiffusion::Eevxshigh = 1.0*CLHEP::eV;
-//
-////G4double MuZeroDiffusion::MuMass = MuZero::Muonium()->GetPDGMass();  // seg fault
-////const G4double MuZeroDiffusion::MuMass = 105.6583715*CLHEP::MeV/CLHEP::c_squared;
-const G4double MuZeroDiffusion::MuMass_c2 = 105.6583715*CLHEP::MeV;
-//
-const G4double MuZeroDiffusion::MuSpeedMPSq = (2.*CLHEP::k_Boltzmann*TempK/(MuMass_c2))*CLHEP::c_squared;
-const G4double MuZeroDiffusion::MuSpeedMnSq = (8.*CLHEP::k_Boltzmann*TempK/(CLHEP::pi*MuMass_c2 ))*CLHEP::c_squared;
-const G4double MuZeroDiffusion::MuSpeedMn = std::sqrt(MuSpeedMnSq);  // mean speed
-const G4double MuZeroDiffusion::MeanFreePath = 12.*DiffCon/(CLHEP::pi*MuSpeedMn);
+//const G4double MuZeroDiffusion::TempK = 300.*CLHEP::kelvin;  //
+//const G4double MuZeroDiffusion::DiffCon = 10.*CLHEP::cm2/CLHEP::second;  // diffuson constant
+////
+//////// NOT USED
+//////G4double MuZeroDiffusion::Eevxslow = 1.e-6*CLHEP::eV;   // down to 0.001 meV
+//const G4double MuZeroDiffusion::Eevxshigh = 1.0*CLHEP::eV;
+////
+//////G4double MuZeroDiffusion::MuMass = MuZero::Muonium()->GetPDGMass();  // seg fault
+//////const G4double MuZeroDiffusion::MuMass = 105.6583715*CLHEP::MeV/CLHEP::c_squared;
+//const G4double MuZeroDiffusion::MuMass_c2 = 105.6583715*CLHEP::MeV;
+////
+//const G4double MuZeroDiffusion::MuSpeedMPSq = (2.*CLHEP::k_Boltzmann*TempK/(MuMass_c2))*CLHEP::c_squared;
+//const G4double MuZeroDiffusion::MuSpeedMnSq = (8.*CLHEP::k_Boltzmann*TempK/(CLHEP::pi*MuMass_c2 ))*CLHEP::c_squared;
+//const G4double MuZeroDiffusion::MuSpeedMn = std::sqrt(MuSpeedMnSq);  // mean speed
+//const G4double MuZeroDiffusion::MeanFreePath = 12.*DiffCon/(CLHEP::pi*MuSpeedMn);
 ////const G4double MuZeroDiffusion::MeanFreePath = 3.*DiffCon/(0.785*MuSpeedMn);   // check factor in sim
 
 
